@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ArticleList from './ArticleList'
-import {articles} from '../fixtures'
 
+export class App extends Component {
+  static propTypes = {
+    articles: PropTypes.array.isRequired
+  }
 
-const App = props => {
-  const {articles} = props
-  return (
-    <div>
-      {/* <ArticleList articles = {articles}/> */}
-    </div>
-  )
+  render() {
+    const {articles} = this.props
+    return (
+      <div>
+        <ArticleList articles = {articles} />
+      </div>
+    )
+  }
 }
 
 export default App
