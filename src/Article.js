@@ -4,6 +4,7 @@ export class Article extends Component {
   state = {
     isOpen: false
   }
+  
   render() {
     const {article} = this.props
     const {isOpen} = this.state
