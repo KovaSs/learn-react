@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Comment = ({comment}) => (
   <div>
@@ -6,5 +7,9 @@ const Comment = ({comment}) => (
     <div>{comment.text}</div>
   </div>
 )
+
+Comment.propTypes = {
+  comment: PropTypes.object
+}
 
 export default Comment

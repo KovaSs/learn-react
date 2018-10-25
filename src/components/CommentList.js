@@ -2,9 +2,14 @@ import React, { Component } from 'react'
 import Comment from './Comment'
 
 export class CommentList extends Component {
+  static defaultProps = {
+    comments: []
+  }
+
   state = {
     isOpen: false
   }
+  
   render() {
     const text = this.state.isOpen ? 'hide comments' : 'show comments'
     return (
@@ -18,7 +23,7 @@ export class CommentList extends Component {
   getBody = () => {
     if(!this.state.isOpen) return null
     const {comments} = this.props
-    if(!comments || !comments.length) return <p>No comment yet</p>
+    if(!comments.length) return <p>No comment yet</p>
     const commentElement = comments.map(comment =>
       <li key={comment.id}><Comment comment={comment}/></li>)
     return (
@@ -33,7 +38,6 @@ export class CommentList extends Component {
       isOpen: !this.state.isOpen
     })
   )
-
 }
 
 export default CommentList
