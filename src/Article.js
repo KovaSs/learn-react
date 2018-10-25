@@ -7,7 +7,7 @@ export class Article extends Component {
   
   render() {
     const {article} = this.props
-    const {isOpen} = this.state
+		const {isOpen} = this.state
     return (
       <div>
         <h3>{article.title}</h3>
@@ -20,16 +20,18 @@ export class Article extends Component {
   }
 
   getBody = () => {
-    if(!this.state.isOpen) return null
+		if(!this.state.isOpen) return null
     const {article} = this.props
     return <section>{article.text}</section>
   }
-
-  toggleOpen = () => (
+	
+  toggleOpen = e => {
+		e.preventDefault()
+		console.log(e)
     this.setState({
       isOpen: !this.state.isOpen
-    })
-  )
+		})
+	}
 }
 
 export default Article
