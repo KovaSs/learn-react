@@ -28,7 +28,7 @@ class Article extends Component {
         <button onClick={toggleOpen}>
           {isOpen ? 'close' : 'open'}
         </button>
-        {this.getBody()}
+          {this.getBody()}
       </div>
     )
   }
