@@ -9,7 +9,10 @@ const Comment = ({comment}) => (
 )
 
 Comment.propTypes = {
-  comment: PropTypes.object
+  comment: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired
+  })
 }
 
 export default Comment

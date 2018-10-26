@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Comment from './Comment'
 import toggleOpen from '../decorators/toggleOpen'
 
@@ -10,6 +11,12 @@ const CommentList = ({comments = [], isOpen, toggleOpen}) => {
 			{getBody({comments, isOpen})}
 		</div>
 	)
+}
+
+CommentList.propTypes = {
+	comments: PropTypes.array.isRequired,
+	isOpen: PropTypes.bool.isRequired,
+	toggleOpen: PropTypes.func.isRequired
 }
 
 const getBody = ({comments, isOpen}) => {

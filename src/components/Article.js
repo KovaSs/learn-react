@@ -4,8 +4,15 @@ import CommentList from './CommentList'
 import toggleOpen from '../decorators/toggleOpen'
 
 class Article extends Component {
+  
   static propTypes = {
-    article: PropTypes.object.isRequired
+    article: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      text: PropTypes.string,
+      title: PropTypes.string.isRequired
+    }).isRequired,
+    isOpen: PropTypes.bool.isRequired,
+    toggleOpen: PropTypes.func.isRequired
   }
 
   render() {
