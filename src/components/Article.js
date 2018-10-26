@@ -15,8 +15,13 @@ class Article extends Component {
     toggleOpen: PropTypes.func.isRequired
   }
 
+  shouldComponentUpdate = (nextProps, nextState) => (
+    nextProps.isOpen !== this.props.isOpen
+  )
+
   render() {
     const {article, isOpen, toggleOpen} = this.props
+    console.log('---', 'update article')
     return (
       <div>
         <h3>{article.title}</h3>
