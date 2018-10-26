@@ -14,7 +14,7 @@ const CommentList = ({comments = [], isOpen, toggleOpen}) => {
 }
 
 CommentList.propTypes = {
-	comments: PropTypes.array.isRequired,
+	comments: PropTypes.array,
 	isOpen: PropTypes.bool.isRequired,
 	toggleOpen: PropTypes.func.isRequired
 }
