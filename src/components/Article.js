@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 import CommentList from './CommentList'
+import {deleteArticle} from '../AC'
 import toggleOpen from '../decorators/toggleOpen'
 
 class Article extends Component {
@@ -28,9 +30,15 @@ class Article extends Component {
         <button onClick={toggleOpen}>
           {isOpen ? 'close' : 'open'}
         </button>
+        <button onClick={this.handleDeleteArticle}>Delete article</button>
           {this.getBody()}
       </div>
     )
+  }
+
+  handleDeleteArticle = () => {
+    const {deleteArticle, article} = this.props
+    deleteArticle(article.id)
   }
 
   formatDate = date => {
@@ -56,5 +64,5 @@ class Article extends Component {
   }
 }
 
-export default Article
+export default connect(null, { deleteArticle })(Article)
 
