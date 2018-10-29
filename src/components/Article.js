@@ -48,7 +48,7 @@ class Article extends Component {
     if(!isOpen) return null
     return (
       <section>
-        <i> Дата: ({this.formatDate(new Date(article.date))})</i><br/>
+        <i> Date: ({this.formatDate(new Date(article.date))})</i><br/>
         {article.text}
         <CommentList comments = {article.comments}/>
       </section>
