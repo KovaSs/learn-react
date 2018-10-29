@@ -1,25 +1,21 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Select } from 'antd';
+import { connect } from 'react-redux'
+import { changeSelection } from '../../AC'
 import 'antd/dist/antd.css'; 
 
 class SelectFilter extends Component {
-  state = {
-      selected: []
-  }
-
   static propTypes = {
-      articles: PropTypes.array.isRequired
+    articles: PropTypes.array.isRequired
   }
 
-  handleChange = selected => this.setState({selected})
+  handleChange = selected => this.props.changeSelection(selected.map(option => option.value))
 
   render() {
-    const { selected } = this.state
-    const { articles } = this.props
-
+    const { articles, selected } = this.props
     const Option = Select.Option
-    const children = this.props.articles.map(article =>
+    const children = articles.map(article =>
       <Option key={article.id}>{article.title}</Option>)
 
     return (
@@ -35,4 +31,7 @@ class SelectFilter extends Component {
     )
   }
 }
-export default SelectFilter
+export default connect(state => ({
+  selected: state.filters.selected,
+  articles: state.articles
+}), { changeSelection })(SelectFilter)

@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
 import { DatePicker } from 'antd';
+import { connect } from 'react-redux'
+import { changeDateRange } from '../../AC'
 
 class DateRange extends Component {
-  state = {
-    from: null,
-    to: null
-  }
 
   handleDayClick = (day) => {
-    this.setState(DateUtils.addDayToRange(day, this.state))
+    const { changeDateRange, range } = this.props
+    changeDateRange(DateUtils.addDayToRange(day, range))
   }
 
   render() {
-    const { from, to } = this.state;
+    const { from, to } = this.props.range
     const { RangePicker} = DatePicker
     const selectedRange = from && to && `${from.toDateString()} - ${to.toDateString()}`
 
@@ -28,5 +27,7 @@ class DateRange extends Component {
     );
   }
 }
-export default DateRange
+export default connect(state => ({
+  range: state.filters.dateRange
+}), { changeDateRange })(DateRange)
 
