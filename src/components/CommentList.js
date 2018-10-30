@@ -16,8 +16,9 @@ const CommentList = ({comments = [], isOpen, toggleOpen}) => {
 
 CommentList.propTypes = {
 	comments: PropTypes.array,
-	isOpen: PropTypes.bool.isRequired,
-	toggleOpen: PropTypes.func.isRequired
+	// from toggleOpen decorator
+	isOpen: PropTypes.bool,
+	toggleOpen: PropTypes.func
 }
 
 const getBody = ({comments, isOpen}) => {
@@ -31,7 +32,7 @@ const getBody = ({comments, isOpen}) => {
 	return (
 		<div>
 			<ul>
-					{comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)}
+					{comments.map(id => <li key={id}><Comment id={id}/></li>)}
 			</ul>
 			<CommentForm/>
 		</div>
